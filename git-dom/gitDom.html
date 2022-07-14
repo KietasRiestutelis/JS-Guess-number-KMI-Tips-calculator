@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <!--bootstrap icons-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+
+    <!--Font family-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Rowdies:wght@300&display=swap" rel="stylesheet"> 
+    
+    <link rel="icon" href="favicon.png" type="image/png">
+    <title>JS DOM</title>
+ 
+
+    <style>
+      
+
+      body{
+        background:linear-gradient(
+          to right,
+          #d9e668,
+          #7b8de7
+        );
+      }
+
+      .btn{
+        background-color: #4c5066;
+      }
+      p, label{
+        font-family: 'Roboto Slab', serif;
+      }
+
+
+         section p{
+             margin-left: 167px;
+         }
+      
+    </style>
+    </head>
+    <body>
+     
+        <div class="container mx-auto mt-5" >
+          <div class="row">
+            <div class="col-4">
+            <form name="form">
+                <div class="form-group ">
+                    <label>Guess a number from 0 to 100</label>
+                    <input name="input" type="number" placeholder="Guess a number" class="form-control my-2" id="textField">
+                    <div class="row">
+                      <div class="col-6">
+                    <button  type="submit" class="btn px-5 my-3 text-light" id="btn">Submit</button>
+                  </div>
+                  <div class="col-6">
+                    <button  type="submit" class="btn px-5 my-3 text-light d-none" id="restart">Restart</button>
+                  </div>
+                </div>
+                </div>  
+            </form>
+            <p id="message1"></p>
+            <p id="message2"></p>
+            <p id="message3"></p>
+          </div>
+          </div>
+        </div>
+        <hr>
+        <!--3 praktinis-->
+        <div class="container">
+          <div class="row">
+              <!--Form-->
+              <div class="col-4 mt-5">
+                  <form id="form1">
+                      <div class="form-group">
+                          <label for="height">Įveskite savo ūgį (nuo 100cm iki 300cm)</label>
+                          <input required type="number" class="form-control my-2" id="height" name="height" min="100" max="300"
+                              placeholder="Įveskite savo ūgį centimetrais" pattern="[0-9]{3}">
+                      </div>
+                      <div class="form-group">
+                          <label for="weight">Įveskite savo svorį( nuo 5 kg iki 200kg)</label>
+                          <input required type="number" class="form-control my-2" id="weight" name="weight" placeholder="Svoris kg"
+                              min="5" max="200"  pattern="[0-9]{3}">
+                      </div>
+                      <button type="submit" class="btn btn-primary my-2" id="btn1">Skaičiuoti KMI</button>
+                  </form>
+                  <p id="hide" class="d-none">Jūsų KMI yra: <span class="h2" id="kmi"></span></p>
+  
+              </div>
+              <!--Table-->
+              <div class="col-8 mt-5">
+                  <table class="table d-none" id="table">
+                      <thead>
+                          <tr>
+                              <th scope="col">KMI</th>
+                              <th scope="col">Reikšmė</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Mažiau kaip 18.5</td>
+                              <td>Nepakankamas svoris</td>
+                          </tr>
+                          <tr>
+                              <td>18.5 ir daugiau, mažiau kaip 25</td>
+                              <td>Normalus svoris</td>
+  
+                          </tr>
+                          <tr>
+  
+                              <td>25 ir daugiau, mažiau kaip 30</td>
+                              <td>Anstvoris</td>
+                          </tr>
+                          <tr>
+  
+                              <td>30 ir daugiau</td>
+                              <td>Nutukimas</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      <hr>
+      <!-- 8 uzdavinys -->
+      <div class="container bg-white rounded col-5 mb-3">
+        <div class="row bg-primary rounded-top">
+        <h5 class="text-center py-2 text-white">ARBATPINIGIŲ SKAIČIUOKLĖ</h5>
+    </div>
+        <form name="form">
+            <div class="form-group">
+                <div class="col-9">
+                    
+                    <label>Sąskaitos suma: </label>
+                    <div class="d-flex">
+                    <input name="input" type="number" min="0" placeholder="Sąskaitos suma:" class="form-control my-2 text-danger"
+                        id="sum"><span class="d-flex my-3 mx-2">Eur</span>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <label class=" rounded" for="id_of_select">Įvertinkite aptarnavimą</label>
+                    <select class="form-control" id="list" onchange="onOption();">
+                        <option value="0" selected disabled>--Pasirinkite--</option>
+                        <option value="1">30% - Fantastika!</option>
+                        <option value="2">20% - Labai geras</option>
+                        <option value="3">10% - OK</option>
+                        <option value="4">5% - Blogas</option>
+                        <option value="5">1% - Siaubingas</option>
+                    </select>
+                </div>
+                <div class="col-9">
+                    <label>Žmonių skaičius: </label>
+                    <input id="numberOfPeople" min="1" name="input" type="number" placeholder="Žmonių skaičius:" class="form-control my-2 text-danger">
+                </div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-lg my-3 text-light bg-primary" id="btn2"><strong>SKAIČIUOK</strong></button>
+                </div>
+
+        </form>
+    <section>
+        <div class="col-12">
+        <div class="hide row bg-primary rounded-bottom d-none ">
+            <h5 class="text-center pt-2 text-white "><strong>ARBATPINIGIAI</strong></h5>
+            <div class="d-flex text-center">
+           <p class="text-white h1" id="summary"></p><p class="d-flex my-1 mx-2 text-white h5">Eur</p>
+        </div>
+            <h5 class="text-center pb-2 text-white "><strong>KIEKVIENAM</strong></h5>
+        </div>
+    </div>
+    </section>
+    </div>
+   
+  
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+      <!--JS Script-->
+    <script src="script.js"></script>
+    <!--Bootstrap script-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    </body>
+  </html>
